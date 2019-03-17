@@ -4,8 +4,7 @@ NETWORK=$(docker inspect --format '{{ .NetworkSettings.Networks }}' zookeeper | 
 # Only works for container ports, that are mapped/exposed on the Host
 ZK_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "2181/tcp") 0).HostPort }}' zookeeper)
 
-echo "Network: $NETWORK"
-echo "ZooKeeper Port: $ZK_PORT"
+echo "Docker Network: $NETWORK"
 
 # create topic
 docker run -it --rm \
